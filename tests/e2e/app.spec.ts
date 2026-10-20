@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 const FIXTURE = fileURLToPath(new URL('../fixtures/solvay1927.jpg', import.meta.url))
 /** E2E_PREVIEW=1이면 빌드 결과로 돌고, 소스 모듈을 직접 import하는 테스트는 건너뛴다 */
-const PREVIEW = !!process.env.E2E_PREVIEW
+const PREVIEW = !!process.env.E2E_PREVIEW || !!process.env.E2E_BASE_URL
 /** 지정하면 화면 확인용 스크린샷을 남긴다 */
 const SHOTS = process.env.SCREENSHOT_DIR
 
@@ -98,7 +98,8 @@ test('사진은 어디에도 업로드되지 않는다', async ({ page }) => {
   await openFixture(page)
   await page.getByRole('button', { name: '저장하기' }).click()
 
-  const external = requests.filter((r) => !new URL(r.url).hostname.match(/^(localhost|127\.0\.0\.1)$/) && !r.url.startsWith('data:') && !r.url.startsWith('blob:'))
+  const appHost = new URL(page.url()).hostname
+  const external = requests.filter((r) => !r.url.startsWith('data:') && !r.url.startsWith('blob:') && new URL(r.url).hostname !== appHost)
   expect(external).toEqual([])
   expect(requests.filter((r) => r.method !== 'GET')).toEqual([])
 })

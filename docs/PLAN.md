@@ -2,7 +2,7 @@
 
 ## Context
 사진을 올리면 사람 얼굴을 자동으로 찾아 블러 처리해 주는 서비스를 만든다. 목적은 SNS나 블로그에 사진을 올릴 때 다른 사람의 초상권과 개인정보를 쉽게 보호하는 것이다.
-`/Users/ukbang/Desktop/dev/blur_project`는 빈 폴더라 처음부터 만든다.
+프로젝트 폴더(처음 이름 `blur_project`, 배포하며 `face-blur`로 변경)는 빈 폴더라 처음부터 만든다.
 
 **사용자가 확정한 방향**
 - 플랫폼: **웹앱**
@@ -57,7 +57,7 @@
 
 ## 프로젝트 구조 (예정)
 ```
-blur_project/
+face-blur/
   docs/PLAN.md                  ← 이 계획서 사본
   public/models/                ← 감지 모델·WASM 직접 호스팅
   src/

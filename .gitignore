@@ -35,3 +35,6 @@ spike/results/
 # Playwright
 test-results/
 playwright-report/
+
+# Vercel CLI
+.vercel/
