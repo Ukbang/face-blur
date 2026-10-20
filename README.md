@@ -1,5 +1,7 @@
 # 얼굴 블러
 
+**https://face-blur-sigma.vercel.app**
+
 사진을 올리면 얼굴을 자동으로 찾아 블러 처리하는 웹앱이다. **사진은 서버로 전송되지 않는다.** 감지, 블러, 저장이 모두 브라우저 안에서 일어난다.
 
 - 자동 감지: MediaPipe BlazeFace(full-range)에 이미지 피라미드 타일링을 더해 단체 사진의 작은 얼굴까지 찾는다
@@ -34,6 +36,13 @@ E2E는 다음을 확인한다.
 - 효과가 박스 안 픽셀만 바꾸는지
 - 정밀 감지 병합
 - 모바일 레이아웃과 터치
+
+## 배포
+
+- Vercel 프로젝트 `face-blur`가 GitHub `Ukbang/face-blur`(비공개)와 연결돼 있다
+- `master`에 push하면 프로덕션에 자동 배포되고, 다른 브랜치는 미리보기로 배포된다
+- 보안 헤더(CSP 등)와 캐시 설정은 `vercel.json`에 있다
+- 배포된 사이트 검증: `E2E_BASE_URL=https://face-blur-sigma.vercel.app npm run test:e2e`
 
 ## 구조
 
